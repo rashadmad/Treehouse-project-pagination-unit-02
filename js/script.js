@@ -2,7 +2,38 @@
 Treehouse Techdegree:
 FSJS project 2 - List Filter and Pagination
 ******************************************/
-   
+ 
+/**
+first off I want to remove the elements as they are in html
+I will leave them physically in the html as this site is meant
+to work with out javaScript. I am doing this so I can dynamically 
+create diffrent list items using json like data
+**/
+//
+
+//gets rid all contents of ul
+
+
+//then we will need to show our data with the showPage
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Study guide for this project - https://drive.google.com/file/d/1OD1diUsTMdpfMDv677TfL1xO2CEkykSz/view?usp=sharing
 
 /*** 
