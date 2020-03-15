@@ -12,14 +12,12 @@ create diffrent list items using json like data
 //
 
 //then we will need to show our data with the showPage
-const showPage =() => {
-   return unorderedList.innerHTML = "stuff";
-};
+const showPage = () => unorderedList.innerHTML = "stuff";
 
 //this triggers on page load allowing us to 
 window.onload = () => {
    //gets rid all contents of the ul element
-   page.innerHTML = "";
+   page.innerHTML = pageBase + unorderedList;
    showPage();
 }
 
