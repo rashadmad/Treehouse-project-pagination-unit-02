@@ -2,7 +2,7 @@
 Treehouse Techdegree:
 FSJS project 2 - List Filter and Pagination
 ******************************************/
- 
+"use strict" 
 /**
 first off I want to remove the elements as they are in html
 I will leave them physically in the html as this site is meant
@@ -11,12 +11,17 @@ create diffrent list items using json like data
 **/
 //
 
-//gets rid all contents of ul
-
-
 //then we will need to show our data with the showPage
+const showPage =() => {
+   return unorderedList.innerHTML = "stuff";
+};
 
- 
+//this triggers on page load allowing us to 
+window.onload = () => {
+   //gets rid all contents of the ul element
+   page.innerHTML = "";
+   showPage();
+}
 
 
 
