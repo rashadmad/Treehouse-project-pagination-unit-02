@@ -26,11 +26,17 @@ window.onload = () => {
 }
 
 // create a list item
-const creatListItem = () => {
-    unorderedList.innerHTML = student("https://randomuser.me/api/portraits/thumb/women/67.jpg","iboya vat","iboya.vat@example.com","Joined 07/15/15");
+const creatListItem = (itemNum) => {
+    unorderedList.innerHTML = student(studentData[itemNum].img,studentData[itemNum].name,studentData[itemNum].email,studentData[itemNum].dateJoined);
 }
 
-creatListItem();
+const populatePage = (min,max) => {
+   let acc = 0;
+   for (let i = min; i <= max; ++i)
+   acc += i;
+
+   creatListItem(acc);
+}
 
 
 
