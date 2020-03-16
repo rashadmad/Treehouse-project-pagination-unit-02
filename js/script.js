@@ -11,17 +11,26 @@ create diffrent list items using json like data
 **/
 //
 
-//then we will need to show our data with the showPage
-const showPage = () => unorderedList.innerHTML = "stuff";
+///then we will need to show our data with the showPage
+const showPage = () => {
+   //add an ul to the page
+   page.appendChild(unorderedList);  
+}
 
 //this triggers on page load allowing us to 
 window.onload = () => {
+   //addeds a title and search bar to the page
+   page.innerHTML = pageBase;
    //gets rid all contents of the ul element
-   page.innerHTML = pageBase + unorderedList;
    showPage();
 }
 
+// create a list item
+const creatListItem = () => {
+    unorderedList.innerHTML = student("https://randomuser.me/api/portraits/thumb/women/67.jpg","iboya vat","iboya.vat@example.com","Joined 07/15/15");
+}
 
+creatListItem();
 
 
 
