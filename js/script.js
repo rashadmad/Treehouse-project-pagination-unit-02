@@ -12,33 +12,29 @@ create diffrent list items using json like data
 //
 
 ///then we will need to show our data with the showPage
-const showPage = () => {
-   //add an ul to the page
-   page.appendChild(unorderedList);  
-}
-
+// const showPage = () => {
+//    //add an ul to the page
+//    page.appendChild(unorderedList);  
+// }
+unorderedList = ''
 //this triggers on page load allowing us to 
 window.onload = () => {
    //addeds a title and search bar to the page
    page.innerHTML = pageBase;
    //gets rid all contents of the ul element
-   showPage();
-}
-
-// create a list item
-const creatListItem = (itemNum) => {
-    unorderedList.innerHTML = student(studentData[itemNum].img,studentData[itemNum].name,studentData[itemNum].email,studentData[itemNum].dateJoined);
+   unorderedList = ''
+   //showPage();
+   
 }
 
 const populatePage = (min,max) => {
-   let acc = 0;
-   for (let i = min; i <= max; ++i)
-   acc += i;
-
-   creatListItem(acc);
+   // create a list item
+   for (let i = min; i <= max; i++){ 
+      console.log(student(i));
+   }
 }
 
-
+populatePage(1,10);
 
 
 
