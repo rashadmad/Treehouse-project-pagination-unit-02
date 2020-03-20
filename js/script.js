@@ -23,24 +23,42 @@ window.onload = () => {
    pageHeader.innerHTML = pageBase;
    const AltList = document.querySelector('ul');
    page.removeChild(AltList);
-   page.appendChild(pagination);
 }
 
-const showPage = (min,max) => {
-   let list = document.createElement("ul");
-   list.className = 'student-list';
-   pagination.appendChild(list);
+///this nifty function here creates as many list items as you want 
+const populateList = (max) => {
 
-   for (let i = min; i <= max; i++){ 
+   page.appendChild(list); 
+
+   for (let i = 0; i <= max; i++){ 
       let listItem = document.createElement("li");
       listItem.innerHTML = student(i);
       listItem.className = 'student-item cf';
       list.appendChild(listItem); 
    }
+   page.appendChild(pagination);
 }
 
-showPage(1,10);
+//I know that there are cases when you want both prev and next page buttons
+//Ther may be situations where you dont need any
+const appendPageLinks = (prevPage,NextPage) => {
+   if (prevPage){pagination.appendChild(prevPageButton)};
+   if (NextPage){pagination.appendChild(nextPageButton)};
+}
 
+ /**
+ So I need to create a page of populated list elements
+ I need to break up the diffrent list of elements into list of 1 - 10 
+ but in some cases this list will be less then ten. our function populateList allows us to
+ create list and decide on the amount of 
+ **/
+
+ const showPage = () => {
+   //amount to display
+   const listAmount = 10;
+
+   populateList(listAmount);
+ }
 
 
 
