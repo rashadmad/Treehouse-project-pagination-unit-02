@@ -16,21 +16,21 @@ create diffrent list items using json like data
 //    //add an ul to the page
 //    page.appendChild(unorderedList);  
 // }
-unorderedList = ''
 //this triggers on page load allowing us to 
 window.onload = () => {
-   //addeds a title and search bar to the page
+   //addeds a title and search bar to the page and gets rid all contents of the ul element
    page.innerHTML = pageBase;
-   //gets rid all contents of the ul element
-   unorderedList = ''
-   //showPage();
+   let unorderedList = document.createElement('ul');
    
 }
 
 const populatePage = (min,max) => {
-   // create a list item
    for (let i = min; i <= max; i++){ 
-      console.log(student(i));
+      let unorderedList = document.getElementById('my-student-list');
+      let listItem = document.createElement('li');
+      listItem.className = 'student-item cf';
+      listItem.innerHTML = student(i);
+      unorderedList.appendChild(listItem);
    }
 }
 
