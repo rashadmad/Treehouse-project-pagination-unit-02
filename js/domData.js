@@ -4,7 +4,8 @@
 so I am going to need to create elements to populate the page
 **/
 const body = document.getElementsByTagName('body');
-const page = document.querySelector('.page-header'); 
+const pageHeader = document.querySelector('.page-header'); 
+const page = document.querySelector('.page');
 //next page button
 const nextPageButton = document.createElement("BUTTON");
 nextPageButton.className = '.nextPageButton';

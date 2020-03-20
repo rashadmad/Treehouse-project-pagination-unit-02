@@ -20,21 +20,26 @@ create diffrent list items using json like data
 //this triggers on page load allowing us to 
 window.onload = () => {
    //addeds a title and search bar to the page and gets rid all contents of the ul element
-   page.innerHTML = pageBase;
-   document.body.appendChild(pagination);
+   pageHeader.innerHTML = pageBase;
+   const AltList = document.querySelector('ul');
+   page.removeChild(AltList);
+   page.appendChild(pagination);
 }
 
-// const populatePage = (min,max) => {
-//    for (let i = min; i <= max; i++){ 
-//       let list = document.createElement("ul");
-//       let listItem = document.createElement("li");
-//       listItem.innerHTML = student(i);
-//       Document.body.appendChild(list);
-//       list.appendChild(listItem); 
-//    }
-// }
+const populatePage = (min,max) => {
+   let list = document.createElement("ul");
+   list.className = 'student-list';
+   pagination.appendChild(list);
 
-// populatePage(1,10);
+   for (let i = min; i <= max; i++){ 
+      let listItem = document.createElement("li");
+      listItem.innerHTML = student(i);
+      listItem.className = 'student-item cf';
+      list.appendChild(listItem); 
+   }
+}
+
+populatePage(1,10);
 
 
 
