@@ -11,6 +11,7 @@ create diffrent list items using json like data
 **/
 //
 
+
 ///then we will need to show our data with the showPage
 // const showPage = () => {
 //    //add an ul to the page
@@ -20,17 +21,16 @@ create diffrent list items using json like data
 window.onload = () => {
    //addeds a title and search bar to the page and gets rid all contents of the ul element
    page.innerHTML = pageBase;
-   let unorderedList = document.querySelector('ul');
-   unorderedList.innerHTML = "";
+   document.body.appendChild(pagination);
 }
 
 // const populatePage = (min,max) => {
 //    for (let i = min; i <= max; i++){ 
-//       let unorderedList = document.getElementById('my-student-list');
-//       let listItem = document.createElement('li');
-//       listItem.className = 'student-item cf';
+//       let list = document.createElement("ul");
+//       let listItem = document.createElement("li");
 //       listItem.innerHTML = student(i);
-//       unorderedList.appendChild(listItem);
+//       Document.body.appendChild(list);
+//       list.appendChild(listItem); 
 //    }
 // }
 

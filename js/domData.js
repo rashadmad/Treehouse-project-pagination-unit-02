@@ -3,6 +3,7 @@
 /**
 so I am going to need to create elements to populate the page
 **/
+const body = document.getElementsByTagName('body');
 const page = document.querySelector('.page-header'); 
 //next page button
 const nextPageButton = document.createElement("BUTTON");
@@ -10,7 +11,10 @@ nextPageButton.className = '.nextPageButton';
 //prev page button
 const prevPageButton = document.createElement("BUTTON");
 prevPageButton.className = '.prevPageButton';
-//student list
+//pagination
+const pagination = document.createElement("div");
+pagination.className = 'pagination';
+
 
 
 // title here will also hold a search bar also next to it would be an unordered list
