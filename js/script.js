@@ -26,7 +26,7 @@ window.onload = () => {
    page.appendChild(pagination);
 }
 
-const populatePage = (min,max) => {
+const showPage = (min,max) => {
    let list = document.createElement("ul");
    list.className = 'student-list';
    pagination.appendChild(list);
@@ -39,7 +39,7 @@ const populatePage = (min,max) => {
    }
 }
 
-populatePage(1,10);
+showPage(1,10);
 
 
 
