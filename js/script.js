@@ -26,16 +26,16 @@ window.onload = () => {
 }
 
 ///this nifty function here creates as many list items as you want 
-const populateList = (max) => {
+const populateList = (groupedArray) => {
 
    page.appendChild(list); 
-
-   for (let i = 0; i <= max; i++){ 
+   
+   groupedArray.forEach((studentItem) => {
       let listItem = document.createElement("li");
-      listItem.innerHTML = student(i);
+      listItem.innerHTML = studentItem;
       listItem.className = 'student-item cf';
       list.appendChild(listItem); 
-   }
+   })
    page.appendChild(pagination);
 }
 
@@ -47,20 +47,41 @@ const appendPageLinks = (prevPage,NextPage) => {
 }
 
  /**
+I am going to need to chart which elements are being displayed 
+therefore only displaying every item once at most one time furthermore the idea 
+here i
+**/
+
+
+ /**
  So I need to create a page of populated list elements
- I need to break up the diffrent list of elements into list of 1 - 10 
+ I need to break up the diffrent list of elements into list of 0 - 9 
  but in some cases this list will be less then ten. our function populateList allows us to
  create list and decide on the amount of 
  **/
 
+//I want to display only ten students at a time 
+const breakDataIntoGroupsOfTen = (myArray, groupSize) =>{
+   var arrayLength = myArray.length;
+   var groupedArray = [];
+   
+   for (let i = 0; i < arrayLength; i += groupSize) {
+       myGroup = myArray.slice(i, i + groupSize);
+       // Do something if you want with the group
+       groupedArray.push(myGroup);
+   }
+
+   return groupedArray;
+}
+
  const showPage = () => {
    //amount to display
-   const listAmount = 10;
-
-   populateList(listAmount);
+   const groupSize = 10;
+   breakDataIntoGroupsOfTen(studentData,groupSize);
+   populateList(listStart,groupSize);
  }
 
-
+//  document.querySelector('.nextPageButton').addEventListener("click", prevPageButtonClicked, false);
 
 
 
@@ -109,9 +130,6 @@ const appendPageLinks = (prevPage,NextPage) => {
    Create the `appendPageLinks function` to generate, append, and add 
    functionality to the pagination buttons.
 ***/
-
-
-
 
 
 // Remember to delete the comments that came with this file, and replace them with your own code comments.
