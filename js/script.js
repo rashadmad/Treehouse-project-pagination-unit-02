@@ -19,39 +19,34 @@ create diffrent list items using json like data
 // }
 //this triggers on page load allowing us to 
 window.onload = () => {
-   //addeds a title and search bar to the page and gets rid all contents of the ul element
+   //adds a title and search bar to the page and gets rid all contents of the ul element
    pageHeader.innerHTML = pageBase;
    const AltList = document.querySelector('ul');
-   page.removeChild(AltList);
+
 }
 
-///this nifty function here creates as many list items as you want 
-const populateList = (groupedArray) => {
+// var fruits = ["apple", "orange", "cherry"];
+// fruits.forEach(myFunction);
 
+// function myFunction(item, index) {
+//   document.getElementById("demo").innerHTML += index + ":" + item + "<br>";
+// }
+
+///this nifty function here adds list items to our unordered list 
+//this argument takes in an array
+const populateList = (groupedArray) => {
+   //first we add the ul to the page                                                                                  
    page.appendChild(list); 
    
-   groupedArray.forEach((studentItem) => {
+   for (let i = 0; i < groupedArray.length; i++) {
+      //create a list item to add data to
       let listItem = document.createElement("li");
-      listItem.innerHTML = studentItem;
+      //
+      listItem.innerHTML = student(groupedArray,i);
       listItem.className = 'student-item cf';
       list.appendChild(listItem); 
-   })
-   page.appendChild(pagination);
+    }
 }
-
-//I know that there are cases when you want both prev and next page buttons
-//Ther may be situations where you dont need any
-const appendPageLinks = (prevPage,NextPage) => {
-   if (prevPage){pagination.appendChild(prevPageButton)};
-   if (NextPage){pagination.appendChild(nextPageButton)};
-}
-
- /**
-I am going to need to chart which elements are being displayed 
-therefore only displaying every item once at most one time furthermore the idea 
-here i
-**/
-
 
  /**
  So I need to create a page of populated list elements
@@ -62,8 +57,9 @@ here i
 
 //I want to display only ten students at a time 
 const breakDataIntoGroupsOfTen = (myArray, groupSize) =>{
-   var arrayLength = myArray.length;
-   var groupedArray = [];
+   const arrayLength = myArray.length;
+   let groupedArray = [];
+   let myGroup = [];
    
    for (let i = 0; i < arrayLength; i += groupSize) {
        myGroup = myArray.slice(i, i + groupSize);
@@ -74,17 +70,28 @@ const breakDataIntoGroupsOfTen = (myArray, groupSize) =>{
    return groupedArray;
 }
 
- const showPage = () => {
-   //amount to display
-   const groupSize = 10;
-   breakDataIntoGroupsOfTen(studentData,groupSize);
-   populateList(listStart,groupSize);
- }
+//I know that there are cases when you want both prev and next page buttons
+//Ther may be situations where you dont need any
+const appendPageLinks = (prevPage,NextPage) => {
+   page.appendChild(pagination);
+   if (prevPage){pagination.appendChild(prevPageButton)};
+   if (NextPage){pagination.appendChild(nextPageButton)};
+}
+
+ /**
+I am going to need to chart which elements are being displayed 
+therefore only displaying every item once at most one time furthermore the idea 
+here i
+**/
 
 //  document.querySelector('.nextPageButton').addEventListener("click", prevPageButtonClicked, false);
 
 
-
+const showPage = (pageNum) => {
+   pageNum = 0;
+   populateList(breakDataIntoGroupsOfTen(studentData,10)[pageNum]);
+   page.removeChild(AltList);
+}
 
 
 

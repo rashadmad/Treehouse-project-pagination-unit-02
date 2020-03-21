@@ -28,4 +28,4 @@ list.className = 'student-list';
 
 const pageBase = '<div class="page-header cf"></div><h2>Students</h2><input type="text" placeholder="Search.."></div>'
 
-const student = (num) => '<div class="student-details"><img class="avatar" src=' + studentData[num].img + '><h3>' + studentData[num].name + '</h3><span class="email">' + studentData[num].email + '</span></div><div class="joined-details"><span class="date">' + studentData[num].dateJoined + '</span></div>'
+const student = (myArray,num) => '<div class="student-details"><img class="avatar" src=' + myArray[num].img + '><h3>' + myArray[num].name + '</h3><span class="email">' + myArray[num].email + '</span></div><div class="joined-details"><span class="date">' + myArray[num].dateJoined + '</span></div>'
