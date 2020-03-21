@@ -21,8 +21,8 @@ create diffrent list items using json like data
 window.onload = () => {
    //adds a title and search bar to the page and gets rid all contents of the ul element
    pageHeader.innerHTML = pageBase;
-   const AltList = document.querySelector('ul');
-
+   //showPage(currentPage);
+   emptyList();
 }
 
 // var fruits = ["apple", "orange", "cherry"];
@@ -32,8 +32,15 @@ window.onload = () => {
 //   document.getElementById("demo").innerHTML += index + ":" + item + "<br>";
 // }
 
+//so we are going to need to clear out our ul through out the project
+// this function will take the contents of the ul and delete them
+const emptyList = () => {
+   const currentList = document.querySelector("ul");
+   currentList.innerHTML = ''
+}
+
 ///this nifty function here adds list items to our unordered list 
-//this argument takes in an array
+//this argument takes in an array and from that array populates our unordered list
 const populateList = (groupedArray) => {
    //first we add the ul to the page                                                                                  
    page.appendChild(list); 
@@ -55,7 +62,8 @@ const populateList = (groupedArray) => {
  create list and decide on the amount of 
  **/
 
-//I want to display only ten students at a time 
+//I want to display only ten students at a time this function takes in an array
+//and a amount and creates chunks in said array that seperates sets of the group size
 const breakDataIntoGroupsOfTen = (myArray, groupSize) =>{
    const arrayLength = myArray.length;
    let groupedArray = [];
@@ -74,8 +82,24 @@ const breakDataIntoGroupsOfTen = (myArray, groupSize) =>{
 //Ther may be situations where you dont need any
 const appendPageLinks = (prevPage,NextPage) => {
    page.appendChild(pagination);
-   if (prevPage){pagination.appendChild(prevPageButton)};
-   if (NextPage){pagination.appendChild(nextPageButton)};
+   if (prevPage){
+      pagination.appendChild(prevPageButton)
+      
+      prevPageButton.addEventListener("click", event => {
+         currentPage = currentPage - 1;
+         list = emptyList(list);
+         showPagee(currentPage);
+      });
+   };
+   if (NextPage){
+      pagination.appendChild(nextPageButton)
+
+      nextPageButton.addEventListener("click", event => {
+         currentPage = currentPage + 1;  
+         list = emptyList(list);
+         showPage(currentPage);
+      });
+   };
 }
 
  /**
@@ -88,14 +112,19 @@ here i
 
 
 const showPage = (pageNum) => {
-   pageNum = 0;
+   //envoke our populate function
    populateList(breakDataIntoGroupsOfTen(studentData,10)[pageNum]);
-   page.removeChild(AltList);
+   //if we are on the first page then...
+   if(pageNum === 0){
+      appendPageLinks(false,true);
+      //if we are on the last page then do this
+   } else if(pageNum === breakDataIntoGroupsOfTen(studentData,10).length){
+      appendPageLinks(true,false);
+      //here us the usual case not first or last pages
+   } else {
+      appendPageLinks(true,true);
+   }
 }
-
-
-
-
 
 
 

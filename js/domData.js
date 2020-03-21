@@ -22,7 +22,8 @@ pagination.className = 'pagination';
 let list = document.createElement("ul");
 list.className = 'student-list';
 
-
+//through this varible I will handle paging
+let currentPage = 0;
 
 // title here will also hold a search bar also next to it would be an unordered list
 
