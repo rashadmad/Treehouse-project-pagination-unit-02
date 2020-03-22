@@ -3,59 +3,41 @@ Treehouse Techdegree:
 FSJS project 2 - List Filter and Pagination
 ******************************************/
 "use strict" 
+
 /**
 first off on page load I want to remove the elements as they are in html
 I will leave them physically in the html as this site is meant
 to work with out javaScript. I am doing this so I can dynamically 
-create diffrent list items using json like data
+repopulate the ul directlly after allso need to add a search bar dynamically
 **/
-//
 window.onload = () => {
-   //adds a title and search bar to the page and gets rid all contents of the ul element
+   //adds search bar
    pageHeader.innerHTML = pageBase;
+   //empties list
    listStart.innerHTML = ''
+   //repopulates list 
    showPage(currentPage);
 }
 
-///this nifty function here adds list items to our unordered list 
-//this argument takes in an array and from that array populates our unordered list
+/**
+this nifty function here adds list items to our unordered list 
+this argument takes in an array and from that array populates our unordered list
+**/
 const populateList = (groupedArray) => {
-
    //create a list item to add data to
    let listItem = document.createElement("li");      
    listItem.className = 'student-item cf';
 
    for (let i = 0; i < groupedArray.length; i++) {
-
       listItem.innerHTML = student(groupedArray,i);
       listStart.appendChild(listItem);
    }
 }
 
- /**
- So I need to create a page of populated list elements
- I need to break up the diffrent list of elements into list of 0 - 9 
- but in some cases this list will be less then ten. our function populateList allows us to
- create list and decide on the amount of 
- **/
-
-//I want to display only ten students at a time this function takes in an array
-//and a amount and creates chunks in said array that seperates sets of the group size
-const breakDataIntoGroupsOfTen = (myArray, groupSize) =>{
-   const arrayLength = myArray.length;
-   let groupedArray = [];
-   let myGroup = [];
-   
-   for (let i = 0; i < arrayLength; i += groupSize) {
-       myGroup = myArray.slice(i, i + groupSize);
-       // Do something if you want with the group
-       groupedArray.push(myGroup);
-   }
-   return groupedArray;
-}
-
-//I know that there are cases when you want both prev and next page buttons
-//Ther may be situations where you dont need any
+/**
+I know that there are cases when you want both prev and next page buttons
+Ther may be situations where you dont need any buttons
+**/
 const appendPageLinks = (prevPage,NextPage) => {
    page.appendChild(pagination);
    if (prevPage){
@@ -85,8 +67,6 @@ here i
 **/
 
 //  document.querySelector('.nextPageButton').addEventListener("click", prevPageButtonClicked, false);
-
-
 const showPage = (pageNum) => {
    // deleteList();
    //envoke our populate function
