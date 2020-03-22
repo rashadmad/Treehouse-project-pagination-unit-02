@@ -18,9 +18,8 @@ prevPageButton.innerHTML = 'prev';
 const pagination = document.createElement("div");
 pagination.className = 'pagination';
 
-
-let list = document.createElement("ul");
-list.className = 'student-list';
+let list = document.getElementsByTagName("ul");
+let listStart = document.getElementsByTagName("ul")[0];
 
 //through this varible I will handle paging
 let currentPage = 0;

@@ -4,55 +4,32 @@ FSJS project 2 - List Filter and Pagination
 ******************************************/
 "use strict" 
 /**
-first off I want to remove the elements as they are in html
+first off on page load I want to remove the elements as they are in html
 I will leave them physically in the html as this site is meant
 to work with out javaScript. I am doing this so I can dynamically 
 create diffrent list items using json like data
 **/
 //
-
-
-///then we will need to show our data with the showPage
-// const showPage = () => {
-//    //add an ul to the page
-//    page.appendChild(unorderedList);  
-// }
-//this triggers on page load allowing us to 
 window.onload = () => {
    //adds a title and search bar to the page and gets rid all contents of the ul element
    pageHeader.innerHTML = pageBase;
-   //showPage(currentPage);
-   emptyList();
-}
-
-// var fruits = ["apple", "orange", "cherry"];
-// fruits.forEach(myFunction);
-
-// function myFunction(item, index) {
-//   document.getElementById("demo").innerHTML += index + ":" + item + "<br>";
-// }
-
-//so we are going to need to clear out our ul through out the project
-// this function will take the contents of the ul and delete them
-const emptyList = () => {
-   const currentList = document.querySelector("ul");
-   currentList.innerHTML = ''
+   listStart.innerHTML = ''
+   showPage(currentPage);
 }
 
 ///this nifty function here adds list items to our unordered list 
 //this argument takes in an array and from that array populates our unordered list
 const populateList = (groupedArray) => {
-   //first we add the ul to the page                                                                                  
-   page.appendChild(list); 
-   
+
+   //create a list item to add data to
+   let listItem = document.createElement("li");      
+   listItem.className = 'student-item cf';
+
    for (let i = 0; i < groupedArray.length; i++) {
-      //create a list item to add data to
-      let listItem = document.createElement("li");
-      //
+
       listItem.innerHTML = student(groupedArray,i);
-      listItem.className = 'student-item cf';
-      list.appendChild(listItem); 
-    }
+      listStart.appendChild(listItem);
+   }
 }
 
  /**
@@ -74,7 +51,6 @@ const breakDataIntoGroupsOfTen = (myArray, groupSize) =>{
        // Do something if you want with the group
        groupedArray.push(myGroup);
    }
-
    return groupedArray;
 }
 
@@ -86,17 +62,17 @@ const appendPageLinks = (prevPage,NextPage) => {
       pagination.appendChild(prevPageButton)
       
       prevPageButton.addEventListener("click", event => {
+         emptyList();
          currentPage = currentPage - 1;
-         list = emptyList(list);
-         showPagee(currentPage);
+         showPage(currentPage);
       });
    };
    if (NextPage){
       pagination.appendChild(nextPageButton)
 
       nextPageButton.addEventListener("click", event => {
-         currentPage = currentPage + 1;  
-         list = emptyList(list);
+         emptyList();
+         currentPage = currentPage + 1;
          showPage(currentPage);
       });
    };
@@ -112,15 +88,16 @@ here i
 
 
 const showPage = (pageNum) => {
+   // deleteList();
    //envoke our populate function
    populateList(breakDataIntoGroupsOfTen(studentData,10)[pageNum]);
    //if we are on the first page then...
    if(pageNum === 0){
       appendPageLinks(false,true);
-      //if we are on the last page then do this
+   //if we are on the last page then do this
    } else if(pageNum === breakDataIntoGroupsOfTen(studentData,10).length){
       appendPageLinks(true,false);
-      //here us the usual case not first or last pages
+   //here us the usual case not first or last pages
    } else {
       appendPageLinks(true,true);
    }
