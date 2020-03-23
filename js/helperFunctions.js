@@ -18,7 +18,6 @@ const breakDataIntoGroupsOfTen = (myArray, groupSize) =>{
     
     for (let i = 0; i < arrayLength; i += groupSize) {
         myGroup = myArray.slice(i, i + groupSize);
-        // Do something if you want with the group
         groupedArray.push(myGroup);
     }
     return groupedArray;

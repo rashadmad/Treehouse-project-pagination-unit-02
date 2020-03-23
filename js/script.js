@@ -29,8 +29,9 @@ const showPage = (pageNum) => {
    then take that object break it up into chunks of ten then take one of those chunks
    and run it through our populate function which prints out that data to the list
    **/
-   populateList(breakDataIntoGroupsOfTen(studentData,10)[pageNum]);
-   console.log(populateList(breakDataIntoGroupsOfTen(studentData,10)[pageNum]));
+   const amountToDisplay = 10;
+   const listToDisplay = breakDataIntoGroupsOfTen(studentData,amountToDisplay);
+   populateList(listToDisplay[pageNum]);
    //if we are on the first page then...
    if(pageNum === 0){
       appendPageLinks(false,true);
@@ -49,11 +50,11 @@ this argument takes in an array and from that array populates our unordered list
 **/
 const populateList = (groupedArray) => {
    //create a list item to add data to
-   let list = document.querySelector('ul');
-   let listItem = document.createElement("li");      
-   listItem.className = 'student-item cf';
+   let list = document.querySelector('ul'); 
 
-   for (let i = 0; i < groupedArray.length; i++) {
+   for (let i = 0; i < groupedArray.length; i++) { 
+      let listItem = document.createElement("li"); 
+      listItem.className = 'student-item cf'; 
       listItem.innerHTML = student(groupedArray,i);
       list.appendChild(listItem);
    }
