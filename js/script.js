@@ -11,65 +11,24 @@ to work with out javaScript. I am doing this so I can dynamically
 repopulate the ul directlly after allso need to add a search bar dynamically
 **/
 window.onload = () => {
+   let list = document.querySelector('ul');
    //adds search bar
-   pageHeader.innerHTML = pageBase;
+   pageHeader.innerHTML = '<div class="page-header cf"></div><h2>Students</h2><input type="text" placeholder="Search.."></div>';
    //empties list
-   listStart.innerHTML = ''
+   list = emptyList(list);
    //repopulates list 
    showPage(currentPage);
 }
 
 /**
-this nifty function here adds list items to our unordered list 
-this argument takes in an array and from that array populates our unordered list
+this functino brings everything together here it 
 **/
-const populateList = (groupedArray) => {
-   //create a list item to add data to
-   let listItem = document.createElement("li");      
-   listItem.className = 'student-item cf';
-
-   for (let i = 0; i < groupedArray.length; i++) {
-      listItem.innerHTML = student(groupedArray,i);
-      listStart.appendChild(listItem);
-   }
-}
-
-/**
-I know that there are cases when you want both prev and next page buttons
-Ther may be situations where you dont need any buttons
-**/
-const appendPageLinks = (prevPage,NextPage) => {
-   page.appendChild(pagination);
-   if (prevPage){
-      pagination.appendChild(prevPageButton)
-      
-      prevPageButton.addEventListener("click", event => {
-         emptyList();
-         currentPage = currentPage - 1;
-         showPage(currentPage);
-      });
-   };
-   if (NextPage){
-      pagination.appendChild(nextPageButton)
-
-      nextPageButton.addEventListener("click", event => {
-         emptyList();
-         currentPage = currentPage + 1;
-         showPage(currentPage);
-      });
-   };
-}
-
- /**
-I am going to need to chart which elements are being displayed 
-therefore only displaying every item once at most one time furthermore the idea 
-here i
-**/
-
-//  document.querySelector('.nextPageButton').addEventListener("click", prevPageButtonClicked, false);
 const showPage = (pageNum) => {
-   // deleteList();
-   //envoke our populate function
+   /**
+   this point here can get confusing but what happens is you take our student data object
+   then take that object break it up into chunks of ten then take one of those chunks
+   and run it through our populate function which prints out that data to the list
+   **/
    populateList(breakDataIntoGroupsOfTen(studentData,10)[pageNum]);
    //if we are on the first page then...
    if(pageNum === 0){
@@ -83,7 +42,58 @@ const showPage = (pageNum) => {
    }
 }
 
+/**
+this nifty function here adds list items to our unordered list 
+this argument takes in an array and from that array populates our unordered list
+**/
+const populateList = (groupedArray) => {
+   //create a list item to add data to
+   let list = document.querySelector('ul');
+   let listItem = document.createElement("li");      
+   listItem.className = 'student-item cf';
 
+   for (let i = 0; i < groupedArray.length; i++) {
+      listItem.innerHTML = student(groupedArray,i);
+      console.log(listItem)
+      console.log(list)
+      list.appendChild(listItem);
+   }
+}
+
+/**
+I know that there are cases when you want both prev and next page buttons
+Ther may be situations where you dont need any buttons
+**/
+const appendPageLinks = (prevPage,NextPage) => {
+   let list = document.querySelector('ul');
+   page.appendChild(pagination);
+   if (prevPage){
+      pagination.appendChild(prevPageButton)
+      
+      prevPageButton.addEventListener("click", event => {
+         //empties list
+         list = emptyList(list);
+         currentPage = currentPage - 1;
+         showPage(currentPage);
+      });
+   };
+   if (NextPage){
+      pagination.appendChild(nextPageButton)
+
+      nextPageButton.addEventListener("click", event => {
+         //empties list
+         list = emptyList(list);
+         currentPage = currentPage + 1;
+         showPage(currentPage);
+      });
+   };
+}
+
+ /**
+I am going to need to chart which elements are being displayed 
+therefore only displaying every item once at most one time furthermore the idea 
+here i
+**/
 
 // Study guide for this project - https://drive.google.com/file/d/1OD1diUsTMdpfMDv677TfL1xO2CEkykSz/view?usp=sharing
 

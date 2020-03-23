@@ -22,13 +22,10 @@ const pagination = document.createElement("div");
 pagination.className = 'pagination';
 
 //our unordered list 
-let list = document.getElementsByTagName("ul");
-let listStart = document.getElementsByTagName("ul")[0];
+
 
 //through this varible I will handle paging
 let currentPage = 0;
 
 // title here will also hold a search bar also next to it would be an unordered list
 const pageBase = '<div class="page-header cf"></div><h2>Students</h2><input type="text" placeholder="Search.."></div>'
-
-
