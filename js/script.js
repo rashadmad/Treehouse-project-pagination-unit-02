@@ -13,7 +13,7 @@ repopulate the ul directlly after allso need to add a search bar dynamically
 window.onload = () => {
    let list = document.querySelector('ul');
    //adds search bar
-   pageHeader.innerHTML = '<div class="page-header cf"></div><h2>Students</h2><input type="text" placeholder="Search.."></div>';
+   pageHeader.innerHTML = pageBase;
    //empties list
    list = emptyList(list);
    //repopulates list 
@@ -30,6 +30,7 @@ const showPage = (pageNum) => {
    and run it through our populate function which prints out that data to the list
    **/
    populateList(breakDataIntoGroupsOfTen(studentData,10)[pageNum]);
+   console.log(populateList(breakDataIntoGroupsOfTen(studentData,10)[pageNum]));
    //if we are on the first page then...
    if(pageNum === 0){
       appendPageLinks(false,true);
@@ -54,8 +55,6 @@ const populateList = (groupedArray) => {
 
    for (let i = 0; i < groupedArray.length; i++) {
       listItem.innerHTML = student(groupedArray,i);
-      console.log(listItem)
-      console.log(list)
       list.appendChild(listItem);
    }
 }
