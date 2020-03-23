@@ -29,19 +29,22 @@ const showPage = (pageNum) => {
    then take that object break it up into chunks of ten then take one of those chunks
    and run it through our populate function which prints out that data to the list
    **/
-   const amountToDisplay = 10;
-   const listToDisplay = breakDataIntoGroupsOfTen(studentData,amountToDisplay);
+   const amountToDisplayOnPage = 10;
+   const listToDisplay = breakDataIntoGroupsOfTen(studentData,amountToDisplayOnPage);
    populateList(listToDisplay[pageNum]);
    //if we are on the first page then...
    if(pageNum === 0){
       appendPageLinks(false,true);
-   //if we are on the last page then do this
-   } else if(pageNum === breakDataIntoGroupsOfTen(studentData,10).length){
+      if(pagination.childNodes.length === 2){pagination.removeChild(prevPageButton)}
+   //if we are on the last page but the is a prev button present
+   } else if(pageNum === listToDisplay.length){
       appendPageLinks(true,false);
    //here us the usual case not first or last pages
    } else {
       appendPageLinks(true,true);
    }
+
+
 }
 
 /**
@@ -76,7 +79,7 @@ const appendPageLinks = (prevPage,NextPage) => {
          currentPage = currentPage - 1;
          showPage(currentPage);
       });
-   };
+   } 
    if (NextPage){
       pagination.appendChild(nextPageButton)
 
@@ -86,8 +89,9 @@ const appendPageLinks = (prevPage,NextPage) => {
          currentPage = currentPage + 1;
          showPage(currentPage);
       });
-   };
+   } 
 }
+
 
  /**
 I am going to need to chart which elements are being displayed 
