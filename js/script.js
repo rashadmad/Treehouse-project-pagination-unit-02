@@ -17,50 +17,58 @@ window.onload = () => {
    //empties list
    list = emptyList(list);
    //repopulates list 
-   showPage(currentPage);
+   showPage(currentPage,true);
 }
 
 /**
 this functino brings everything together here it 
 **/
-const showPage = (pageNum) => {
+const showPage = (pageNum,foward) => {
    /**
    this point here can get confusing but what happens is you take our student data object
    then take that object break it up into chunks of ten then take one of those chunks
    and run it through our populate function which prints out that data to the list
    **/
+  console.log(pageNum)
    const amountToDisplayOnPage = 10;
    const listToDisplay = breakDataIntoGroupsOfTen(studentData,amountToDisplayOnPage);
-   populateList(listToDisplay[pageNum]);
+   populateList(listToDisplay[pageNum],foward);
    //if we are on the first page then...
-   if(pageNum === 0){
+   if(pageNum <= 0){
       appendPageLinks(false,true);
       if(pagination.childNodes.length === 2){pagination.removeChild(prevPageButton)}
    //if we are on the last page but the is a prev button present
-   } else if(pageNum === listToDisplay.length){
+   } else if(pageNum >= listToDisplay.length){
       appendPageLinks(true,false);
-   //here us the usual case not first or last pages
+      if(pagination.childNodes.length === 2){pagination.removeChild(nextPageButton)}
+   //here is the usual case not first or last pages
    } else {
       appendPageLinks(true,true);
    }
-
-
 }
 
 /**
 this nifty function here adds list items to our unordered list 
 this argument takes in an array and from that array populates our unordered list
 **/
-const populateList = (groupedArray) => {
+const populateList = (groupedArray,foward) => {
    //create a list item to add data to
    let list = document.querySelector('ul'); 
-
-   for (let i = 0; i < groupedArray.length; i++) { 
-      let listItem = document.createElement("li"); 
-      listItem.className = 'student-item cf'; 
-      listItem.innerHTML = student(groupedArray,i);
-      list.appendChild(listItem);
-   }
+      if(foward){
+         for (let i = 0; i < groupedArray.length; i++) { 
+            let listItem = document.createElement("li"); 
+            listItem.className = 'student-item cf'; 
+            listItem.innerHTML = student(groupedArray,i);
+            list.appendChild(listItem);
+         }
+      } else {
+         for (let i = 0; i < groupedArray.length; i--) { 
+            let listItem = document.createElement("li"); 
+            listItem.className = 'student-item cf'; 
+            listItem.innerHTML = student(groupedArray,i);
+            list.appendChild(listItem);
+         }
+      }
 }
 
 /**
@@ -76,8 +84,9 @@ const appendPageLinks = (prevPage,NextPage) => {
       prevPageButton.addEventListener("click", event => {
          //empties list
          list = emptyList(list);
-         currentPage = currentPage - 1;
-         showPage(currentPage);
+         currentPage--;
+         showPage(currentPage,false);
+         console.log("deacrese")
       });
    } 
    if (NextPage){
@@ -86,8 +95,9 @@ const appendPageLinks = (prevPage,NextPage) => {
       nextPageButton.addEventListener("click", event => {
          //empties list
          list = emptyList(list);
-         currentPage = currentPage + 1;
-         showPage(currentPage);
+         currentPage++;
+         showPage(currentPage,true);
+         console.log("increase")
       });
    } 
 }
