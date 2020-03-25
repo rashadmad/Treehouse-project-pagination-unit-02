@@ -12,11 +12,10 @@ but in some cases this list will be less then ten. our function populateList all
 create list and decide on the amount of 
 **/
 const breakDataIntoGroupsOfTen = (myArray, groupSize) =>{
-    const arrayLength = myArray.length;
     let groupedArray = [];
     let myGroup = [];
     
-    for (let i = 0; i < arrayLength; i += groupSize) {
+    for (let i = 0; i < myArray.length; i += groupSize) {
         myGroup = myArray.slice(i, i + groupSize);
         groupedArray.push(myGroup);
     }

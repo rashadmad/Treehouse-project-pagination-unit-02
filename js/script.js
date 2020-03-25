@@ -11,64 +11,45 @@ to work with out javaScript. I am doing this so I can dynamically
 repopulate the ul directlly after allso need to add a search bar dynamically
 **/
 window.onload = () => {
-   let list = document.querySelector('ul');
    //adds search bar
    pageHeader.innerHTML = pageBase;
    //empties list
-   list = emptyList(list);
+   list.innerHTML = '';
    //repopulates list 
-   showPage(currentPage,true);
+   showPage();
 }
 
 /**
 this functino brings everything together here it 
 **/
-const showPage = (pageNum,foward) => {
+const showPage = () => {
    /**
    this point here can get confusing but what happens is you take our student data object
    then take that object break it up into chunks of ten then take one of those chunks
-   and run it through our populate function which prints out that data to the list
+   and run it through our populate functio0n which prints out that data to the list
    **/
-  console.log(pageNum)
    const amountToDisplayOnPage = 10;
    const listToDisplay = breakDataIntoGroupsOfTen(studentData,amountToDisplayOnPage);
-   populateList(listToDisplay[pageNum],foward);
-   //if we are on the first page then...
-   if(pageNum <= 0){
-      appendPageLinks(false,true);
-      if(pagination.childNodes.length === 2){pagination.removeChild(prevPageButton)}
-   //if we are on the last page but the is a prev button present
-   } else if(pageNum >= listToDisplay.length){
-      appendPageLinks(true,false);
-      if(pagination.childNodes.length === 2){pagination.removeChild(nextPageButton)}
-   //here is the usual case not first or last pages
-   } else {
-      appendPageLinks(true,true);
-   }
+   populateList(listToDisplay,currentPage);
 }
 
 /**
 this nifty function here adds list items to our unordered list 
 this argument takes in an array and from that array populates our unordered list
 **/
-const populateList = (groupedArray,foward) => {
-   //create a list item to add data to
-   let list = document.querySelector('ul'); 
-      if(foward){
-         for (let i = 0; i < groupedArray.length; i++) { 
-            let listItem = document.createElement("li"); 
-            listItem.className = 'student-item cf'; 
-            listItem.innerHTML = student(groupedArray,i);
-            list.appendChild(listItem);
-         }
-      } else {
-         for (let i = 0; i < groupedArray.length; i--) { 
-            let listItem = document.createElement("li"); 
-            listItem.className = 'student-item cf'; 
-            listItem.innerHTML = student(groupedArray,i);
-            list.appendChild(listItem);
-         }
-      }
+const populateList = (groupedArray) => {
+   //create a list item to be printed later
+   let listItem = document.createElement("li");
+   for (let i = 0; i < groupedArray.length; i++) { 
+      const chosenArray = groupedArray[currentPage];
+      //add a classname to a list item
+      listItem.className = 'student-item cf'; 
+      //add a list item to the ul 
+      //the student function takes in an array and number that prints out specific data
+      console.log(student(groupedArray[currentPage],i));
+      listItem.innerHTML = student(groupedArray[currentPage],i);
+      list.appendChild(listItem);
+   }
 }
 
 /**
@@ -76,32 +57,27 @@ I know that there are cases when you want both prev and next page buttons
 Ther may be situations where you dont need any buttons
 **/
 const appendPageLinks = (prevPage,NextPage) => {
-   let list = document.querySelector('ul');
+
    page.appendChild(pagination);
+   //when you click the prev button the paginationClick function fires passing an prameter of true
    if (prevPage){
       pagination.appendChild(prevPageButton)
-      
-      prevPageButton.addEventListener("click", event => {
-         //empties list
-         list = emptyList(list);
-         currentPage--;
-         showPage(currentPage,false);
-         console.log("deacrese")
-      });
+      prevPageButton.addEventListener.addEventListener("click", paginationClick(true));
    } 
    if (NextPage){
       pagination.appendChild(nextPageButton)
-
-      nextPageButton.addEventListener("click", event => {
-         //empties list
-         list = emptyList(list);
-         currentPage++;
-         showPage(currentPage,true);
-         console.log("increase")
-      });
+      nextPageButton.addEventListener.addEventListener("click", paginationClick(false));
    } 
+   
 }
 
+const paginationClick = (increase) => {
+   if(increase){currentPage++}else{currentPage--};
+   //empties list
+   list.innerHTML = '';
+   showPage();
+   
+}
 
  /**
 I am going to need to chart which elements are being displayed 

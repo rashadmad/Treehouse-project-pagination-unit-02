@@ -21,11 +21,11 @@ prevPageButton.innerHTML = 'prev';
 const pagination = document.createElement("div");
 pagination.className = 'pagination';
 
-//our unordered list 
-
+//our unordered list let list = document.querySelector('.student-list');  
+let list = document.querySelector('.student-list') 
 
 //through this varible I will handle paging
-let currentPage = 0;
+let currentPage = 1;
 
 // title here will also hold a search bar also next to it would be an unordered list
 const pageBase = '<div class="page-header cf"></div><h2>Students</h2><input type="text" placeholder="Search.."></div>'
