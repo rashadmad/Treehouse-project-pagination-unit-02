@@ -39,8 +39,8 @@ this argument takes in an array and from that array populates our unordered list
 **/
 const populateList = (groupedArray) => {
    //create a list item to be printed later
-   let listItem = document.createElement("li");
    for (let i = 0; i < groupedArray.length; i++) { 
+      let listItem = document.createElement("li");
       const chosenArray = groupedArray[currentPage];
       //add a classname to a list item
       listItem.className = 'student-item cf'; 
@@ -48,6 +48,7 @@ const populateList = (groupedArray) => {
       //the student function takes in an array and number that prints out specific data
       console.log(student(groupedArray[currentPage],i));
       listItem.innerHTML = student(groupedArray[currentPage],i);
+      //list.appendChild(listItem);
       list.appendChild(listItem);
    }
 }
