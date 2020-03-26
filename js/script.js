@@ -17,8 +17,10 @@ window.onload = () => {
    list.innerHTML = '';
    //repopulates list 
    showPage();
-   appendPageLinks(false,true)
+   appendPageLinks();
 }
+
+let studentDataArray = breakDataIntoGroupsOfTen(studentData,amountToDisplayOnPage);
 
 /**
 this functino brings everything together here it 
@@ -29,8 +31,7 @@ const showPage = () => {
    then take that object break it up into chunks of ten then take one of those chunks
    and run it through our populate functio0n which prints out that data to the list
    **/
-   const studentsToDisplay = breakDataIntoGroupsOfTen(studentData,amountToDisplayOnPage);
-   populateList(studentsToDisplay);
+   populateList(studentDataArray);
 }
 
 /**

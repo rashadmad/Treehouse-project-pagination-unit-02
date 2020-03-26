@@ -52,3 +52,12 @@ const breakDataIntoGroupsOfTen = (myArray, groupSize) =>{
     }
     else {appendPageLinks(true,true)}
  }
+ const removePageLinks = (prevPage,NextPage) => {
+   //when you click the prev button the paginationClick function fires passing an prameter of true
+   if (NextPage){
+      pagination.removeChild(nextPageButton)
+   }
+   if (prevPage){
+      pagination.removeChild(prevPageButton)
+   }
+}
