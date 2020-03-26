@@ -55,10 +55,10 @@ const addItemToList = (myArray,incrementer) => {
 this function works with additemtolist works with the addItemToList function to display diffrent list items.
 populate list takes in an array
 **/
-const populateList = (groupedArray,foward) => {
+const populateList = (myArray,foward) => {
    const firstPage = 0;
-   const lastPage = groupedArray.length;
-   let i;
+   const lastPage = 10;
+   let i = 0;
    //create a list item to be printed later
    if(foward){
       while (i < lastPage) { 
