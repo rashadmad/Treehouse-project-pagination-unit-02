@@ -16,37 +16,22 @@ window.onload = () => {
    //empties list
    list.innerHTML = '';
    //repopulates list 
-   showPage();
-   appendPageLinks();
+   showPage(studentDataArray);
 }
-
-let studentDataArray = breakDataIntoGroupsOfTen(studentData,amountToDisplayOnPage);
-
-/**
-this functino brings everything together here it 
+/** 
+this array takes in all of our student data breaks it up in to segments that can be
+displayed on different pages
 **/
-const showPage = () => {
-   /**
-   this point here can get confusing but what happens is you take our student data object
-   then take that object break it up into chunks of ten then take one of those chunks
-   and run it through our populate functio0n which prints out that data to the list
-   **/
-   populateList(studentDataArray);
-}
+let studentDataArray = breakDataIntoGroupsOfTen(studentData,amountToDisplayOnPage);
 
 /**
 this nifty function here adds list items to our unordered list 
 this argument takes in an array and from that array populates our unordered list
 **/
-
-/**
-this function works with additemtolist works with the addItemToList function to display diffrent list items.
-populate list takes in an array
-**/
-const populateList = (myArray,foward) => {
-   const firstPage = 0;
-   const lastPage = 10;
+const showPage = (myArray) => {
+   paginating();
    let i = 0;
+   const lastPage = amountToDisplayOnPage;
    //create a list item to be printed later
    while (i < lastPage) { 
       let listItem = document.createElement("li");
@@ -63,23 +48,18 @@ const populateList = (myArray,foward) => {
    }
 }
 
-/**
-I know that there are cases when you want both prev and next page buttons
-Ther may be situations where you dont need any buttons
-**/
-const appendPageLinks = (prevPage,NextPage) => {
-
-   page.appendChild(pagination);
-   //when you click the prev button the paginationClick function fires passing an prameter of true
-   if (NextPage){
-      pagination.appendChild(nextPageButton)
-      nextPageButton.addEventListener("click", goToNextPage);
-   }
-   if (prevPage){
-      pagination.appendChild(prevPageButton)
-      prevPageButton.addEventListener("click", goToPrevPage);
+const paginating = () => {
+   //handling first page
+   if(currentPage === 0){
+      appendPageLinks(false,true); 
+      if(pagination.childNodes === 2){removePageLinks(true,false)}
+   } else if(currentPage > studentDataArray.length - 1){
+      removePageLinks(false,true)
+   } else {
+      appendPageLinks(true,true); 
    }
 }
+
 
 // if(increase){currentPage++}else{currentPage--};
 // console.log("hello");

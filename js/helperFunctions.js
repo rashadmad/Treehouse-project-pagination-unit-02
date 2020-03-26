@@ -33,31 +33,44 @@ const breakDataIntoGroupsOfTen = (myArray, groupSize) =>{
     //emptys the ul
     emptyList(list);
     //repopulates the url bute with
-    showPage(false);
-    if(currentPage < 1){
-       appendPageLinks(false,true)
-       removeChild(prevPageButton);
-    }
-    else {appendPageLinks(true,true)}
+    showPage(studentDataArray);
+    console.log(currentPage);
  }
  const goToNextPage = () => {
     const studentsToDisplay = breakDataIntoGroupsOfTen(studentData,amountToDisplayOnPage)
     currentPage++ 
     emptyList(list);
-    showPage(true);
-    if(currentPage > studentsToDisplay - 1){
-       appendPageLinks(true,false);
-       
-       removeChild(nextPageButton);
-    }
-    else {appendPageLinks(true,true)}
+    showPage(studentDataArray);
+    console.log(currentPage);
  }
+
+/**
+when you click the prev button the paginationClick function fires passing an prameter of true
+**/
  const removePageLinks = (prevPage,NextPage) => {
-   //when you click the prev button the paginationClick function fires passing an prameter of true
    if (NextPage){
       pagination.removeChild(nextPageButton)
    }
    if (prevPage){
       pagination.removeChild(prevPageButton)
+   }
+}
+
+/**
+I know that there are cases when you want both prev and next page buttons
+Ther may be situations where you dont need any buttons
+**/
+const appendPageLinks = (prevPage,NextPage) => {
+
+   page.appendChild(pagination);
+   //when you click the prev button the paginationClick function fires passing an prameter of true
+   if (prevPage){
+      pagination.appendChild(prevPageButton)
+      prevPageButton.addEventListener("click", goToPrevPage);
+      console.log(currentPage);
+   }
+   if (NextPage){
+      pagination.appendChild(nextPageButton)
+      nextPageButton.addEventListener("click", goToNextPage);
    }
 }
