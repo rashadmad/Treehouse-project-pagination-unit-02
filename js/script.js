@@ -30,26 +30,64 @@ const showPage = () => {
    **/
    const amountToDisplayOnPage = 10;
    const listToDisplay = breakDataIntoGroupsOfTen(studentData,amountToDisplayOnPage);
-   populateList(listToDisplay,currentPage);
+   populateList(listToDisplay,true);
 }
 
 /**
 this nifty function here adds list items to our unordered list 
 this argument takes in an array and from that array populates our unordered list
 **/
-const populateList = (groupedArray) => {
+const addItemToList = (myArray,incrementer) => {
+   let listItem = document.createElement("li");
+   const chosenArray = myArray[currentPage];
+   //add a classname to a list item
+   listItem.className = 'student-item cf'; 
+   //add a list item to the ul 
+   //the student function takes in an array and number that prints out specific data
+   console.log(student(myArray[currentPage],incrementer));
+   listItem.innerHTML = student(myArray[currentPage],incrementer);
+   //list.appendChild(listItem);
+   list.appendChild(listItem);
+   
+}
+
+/**
+this function works with additemtolist works with the addItemToList function to display diffrent list items.
+populate list takes in an array
+**/
+const populateList = (groupedArray,foward) => {
+   const firstPage = 0;
+   const lastPage = groupedArray.length;
+   let i;
    //create a list item to be printed later
-   for (let i = 0; i < groupedArray.length; i++) { 
-      let listItem = document.createElement("li");
-      const chosenArray = groupedArray[currentPage];
-      //add a classname to a list item
-      listItem.className = 'student-item cf'; 
-      //add a list item to the ul 
-      //the student function takes in an array and number that prints out specific data
-      console.log(student(groupedArray[currentPage],i));
-      listItem.innerHTML = student(groupedArray[currentPage],i);
-      //list.appendChild(listItem);
-      list.appendChild(listItem);
+   if(foward){
+      while (i < lastPage) { 
+         let listItem = document.createElement("li");
+         const chosenArray = myArray[currentPage];
+         //add a classname to a list item
+         listItem.className = 'student-item cf'; 
+         //add a list item to the ul 
+         //the student function takes in an array and number that prints out specific data
+         console.log(student(myArray[currentPage],i));
+         listItem.innerHTML = student(myArray[currentPage],i);
+         //list.appendChild(listItem);
+         list.appendChild(listItem);
+         i++
+      }
+   } else {
+      while (i > firstPage) { 
+         let listItem = document.createElement("li");
+         const chosenArray = myArray[currentPage];
+         //add a classname to a list item
+         listItem.className = 'student-item cf'; 
+         //add a list item to the ul 
+         //the student function takes in an array and number that prints out specific data
+         console.log(student(myArray[currentPage],i));
+         listItem.innerHTML = student(myArray[currentPage],i);
+         //list.appendChild(listItem);
+         list.appendChild(listItem);
+         i--
+      }
    }
 }
 
