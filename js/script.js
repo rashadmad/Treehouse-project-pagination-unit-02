@@ -17,6 +17,7 @@ window.onload = () => {
    list.innerHTML = '';
    //repopulates list 
    showPage();
+   appendPageLinks(false,true)
 }
 
 /**
@@ -28,28 +29,14 @@ const showPage = () => {
    then take that object break it up into chunks of ten then take one of those chunks
    and run it through our populate functio0n which prints out that data to the list
    **/
-   const amountToDisplayOnPage = 10;
-   const listToDisplay = breakDataIntoGroupsOfTen(studentData,amountToDisplayOnPage);
-   populateList(listToDisplay,true);
+   const studentsToDisplay = breakDataIntoGroupsOfTen(studentData,amountToDisplayOnPage);
+   populateList(studentsToDisplay);
 }
 
 /**
 this nifty function here adds list items to our unordered list 
 this argument takes in an array and from that array populates our unordered list
 **/
-const addItemToList = (myArray,incrementer) => {
-   let listItem = document.createElement("li");
-   const chosenArray = myArray[currentPage];
-   //add a classname to a list item
-   listItem.className = 'student-item cf'; 
-   //add a list item to the ul 
-   //the student function takes in an array and number that prints out specific data
-   console.log(student(myArray[currentPage],incrementer));
-   listItem.innerHTML = student(myArray[currentPage],incrementer);
-   //list.appendChild(listItem);
-   list.appendChild(listItem);
-   
-}
 
 /**
 this function works with additemtolist works with the addItemToList function to display diffrent list items.
@@ -60,34 +47,18 @@ const populateList = (myArray,foward) => {
    const lastPage = 10;
    let i = 0;
    //create a list item to be printed later
-   if(foward){
-      while (i < lastPage) { 
-         let listItem = document.createElement("li");
-         const chosenArray = myArray[currentPage];
-         //add a classname to a list item
-         listItem.className = 'student-item cf'; 
-         //add a list item to the ul 
-         //the student function takes in an array and number that prints out specific data
-         console.log(student(myArray[currentPage],i));
-         listItem.innerHTML = student(myArray[currentPage],i);
-         //list.appendChild(listItem);
-         list.appendChild(listItem);
-         i++
-      }
-   } else {
-      while (i > firstPage) { 
-         let listItem = document.createElement("li");
-         const chosenArray = myArray[currentPage];
-         //add a classname to a list item
-         listItem.className = 'student-item cf'; 
-         //add a list item to the ul 
-         //the student function takes in an array and number that prints out specific data
-         console.log(student(myArray[currentPage],i));
-         listItem.innerHTML = student(myArray[currentPage],i);
-         //list.appendChild(listItem);
-         list.appendChild(listItem);
-         i--
-      }
+   while (i < lastPage) { 
+      let listItem = document.createElement("li");
+      const chosenArray = myArray[currentPage];
+      //add a classname to a list item
+      listItem.className = 'student-item cf'; 
+      //add a list item to the ul 
+      //the student function takes in an array and number that prints out specific data
+      (student(myArray[currentPage],i));
+      listItem.innerHTML = student(myArray[currentPage],i);
+      //list.appendChild(listItem);
+      list.appendChild(listItem);
+      i++
    }
 }
 
@@ -99,24 +70,21 @@ const appendPageLinks = (prevPage,NextPage) => {
 
    page.appendChild(pagination);
    //when you click the prev button the paginationClick function fires passing an prameter of true
-   if (prevPage){
-      pagination.appendChild(prevPageButton)
-      prevPageButton.addEventListener.addEventListener("click", paginationClick(true));
-   } 
    if (NextPage){
       pagination.appendChild(nextPageButton)
-      nextPageButton.addEventListener.addEventListener("click", paginationClick(false));
-   } 
-   
+      nextPageButton.addEventListener("click", goToNextPage);
+   }
+   if (prevPage){
+      pagination.appendChild(prevPageButton)
+      prevPageButton.addEventListener("click", goToPrevPage);
+   }
 }
 
-const paginationClick = (increase) => {
-   if(increase){currentPage++}else{currentPage--};
-   //empties list
-   list.innerHTML = '';
-   showPage();
-   
-}
+// if(increase){currentPage++}else{currentPage--};
+// console.log("hello");
+// //empties list
+// list.innerHTML = '';
+// showPage();
 
  /**
 I am going to need to chart which elements are being displayed 

@@ -25,7 +25,8 @@ pagination.className = 'pagination';
 let list = document.querySelector('.student-list') 
 
 //through this varible I will handle paging
-let currentPage = 1;
-
+let currentPage = 0;
+//amount of students to display on a page
+const amountToDisplayOnPage = 10;
 // title here will also hold a search bar also next to it would be an unordered list
 const pageBase = '<div class="page-header cf"></div><h2>Students</h2><input type="text" placeholder="Search.."></div>'
