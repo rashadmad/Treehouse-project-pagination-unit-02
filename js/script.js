@@ -40,7 +40,6 @@ const showPage = (myArray) => {
       listItem.className = 'student-item cf'; 
       //add a list item to the ul 
       //the student function takes in an array and number that prints out specific data
-      (student(myArray[currentPage],i));
       listItem.innerHTML = student(myArray[currentPage],i);
       //list.appendChild(listItem);
       list.appendChild(listItem);
@@ -52,8 +51,10 @@ const paginating = () => {
    //handling first page
    if(currentPage === 0){
       appendPageLinks(false,true); 
-      if(pagination.childNodes === 2){removePageLinks(true,false)}
-   } else if(currentPage > studentDataArray.length - 1){
+      if(pagination.firstChild === prevPageButton){
+         removePageLinks(true,false)
+      }
+   } else if(currentPage > studentDataArray.length - 2){
       removePageLinks(false,true)
    } else {
       appendPageLinks(true,true); 
