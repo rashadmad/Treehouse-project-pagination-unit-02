@@ -34,14 +34,12 @@ const breakDataIntoGroupsOfTen = (myArray, groupSize) =>{
     emptyList(list);
     //repopulates the url bute with
     showPage(studentDataArray);
-    console.log(currentPage);
  }
  const goToNextPage = () => {
     const studentsToDisplay = breakDataIntoGroupsOfTen(studentData,amountToDisplayOnPage)
     currentPage++ 
     emptyList(list);
     showPage(studentDataArray);
-    console.log(currentPage);
  }
 
 /**
@@ -67,7 +65,6 @@ const appendPageLinks = (prevPage,NextPage) => {
    if (prevPage){
       pagination.appendChild(prevPageButton)
       prevPageButton.addEventListener("click", goToPrevPage);
-      console.log(currentPage);
    }
    if (NextPage){
       pagination.appendChild(nextPageButton)

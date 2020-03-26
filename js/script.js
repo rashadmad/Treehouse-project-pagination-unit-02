@@ -30,20 +30,21 @@ this argument takes in an array and from that array populates our unordered list
 **/
 const showPage = (myArray) => {
    paginating();
-   let i = 0;
+   if (myArray){
+         let i = 0;
    const lastPage = amountToDisplayOnPage;
    //create a list item to be printed later
-   while (i < lastPage) { 
-      let listItem = document.createElement("li");
-      const chosenArray = myArray[currentPage];
-      //add a classname to a list item
-      listItem.className = 'student-item cf'; 
-      //add a list item to the ul 
-      //the student function takes in an array and number that prints out specific data
-      listItem.innerHTML = student(myArray[currentPage],i);
-      //list.appendChild(listItem);
-      list.appendChild(listItem);
-      i++
+      while (i < lastPage) { 
+         let listItem = document.createElement("li");
+         //add a classname to a list item so we can get proper styling
+         listItem.className = 'student-item cf'; 
+         //add a list item to the ul 
+         //the student function takes in an array and number that prints out specific data to a list item
+         listItem.innerHTML = student(myArray[currentPage],i);
+         //list.appendChild(listItem);
+         list.appendChild(listItem);
+         i++
+      }
    }
 }
 
