@@ -1,3 +1,6 @@
+
+
+
 //so we are going to need to clear out our ul through out the project
 // this function will take the contents of the ul and delete them
 const emptyList = (myList) => {
@@ -44,30 +47,32 @@ const breakDataIntoGroupsOfTen = (myArray, groupSize) =>{
 
 /**
 when you click the prev button the paginationClick function fires passing an prameter of true
-**/
- const removePageLinks = (prevPage,NextPage) => {
-   if (NextPage){
-      pagination.removeChild(nextPageButton)
-   }
-   if (prevPage){
-      pagination.removeChild(prevPageButton)
-   }
-}
-
-/**
 I know that there are cases when you want both prev and next page buttons
 Ther may be situations where you dont need any buttons
 **/
-const appendPageLinks = (prevPage,NextPage) => {
+ const addOrRemovePageLinks = (prevPage,NextPage,add) => {
+    
+    const prevContainer = document.querySelector('.prevContainer')
+    const nextContainer = document.querySelector('.nextContainer')
 
-   page.appendChild(pagination);
    //when you click the prev button the paginationClick function fires passing an prameter of true
    if (prevPage){
-      pagination.appendChild(prevPageButton)
-      prevPageButton.addEventListener("click", goToPrevPage);
-   }
+      if (add) {
+        prevContainer.appendChild(prevPageButton)
+        prevPageButton.addEventListener("click", goToPrevPage);
+      } else {
+        prevContainer.removeChild(prevPageButton) 
+        console.log("remove nextPageButton")   
+      }
+   } 
    if (NextPage){
-      pagination.appendChild(nextPageButton)
-      nextPageButton.addEventListener("click", goToNextPage);
-   }
+       if (add) {
+        nextContainer.appendChild(nextPageButton)
+        nextPageButton.addEventListener("click", goToNextPage);
+      } else {
+        nextContainer.removeChild(nextPageButton)
+        console.log("remove nextPageButton")   
+      } 
+   }   
 }
+

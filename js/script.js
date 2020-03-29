@@ -11,12 +11,7 @@ to work with out javaScript. I am doing this so I can dynamically
 repopulate the ul directlly after allso need to add a search bar dynamically
 **/
 window.onload = () => {
-   //adds search bar
-   pageHeader.innerHTML = pageBase;
-   //empties list
-   list.innerHTML = '';
-   //repopulates list 
-   showPage(studentDataArray);
+   createIntialPage();
 }
 /** 
 this array takes in all of our student data breaks it up in to segments that can be
@@ -32,7 +27,7 @@ const showPage = (myArray) => {
    paginating();
    if (myArray){
          let i = 0;
-   const lastPage = amountToDisplayOnPage;
+   const lastPage = myArray[i].length;
    //create a list item to be printed later
       while (i < lastPage) { 
          let listItem = document.createElement("li");
@@ -49,18 +44,27 @@ const showPage = (myArray) => {
 }
 
 const paginating = () => {
+   const prevContainer = document.querySelector('.prevContainer').hasChildNodes()
    //handling first page
    if(currentPage === 0){
-      appendPageLinks(false,true); 
-      if(pagination.firstChild === prevPageButton){
-         removePageLinks(true,false)
+      addOrRemovePageLinks(false,true,true); 
+      if(prevContainer){
+         console.log("Remove")
+         addOrRemovePageLinks(true,false)
       }
    } else if(currentPage > studentDataArray.length - 2){
-      removePageLinks(false,true)
+      addOrRemovePageLinks(false,true)
    } else {
-      appendPageLinks(true,true); 
+      addOrRemovePageLinks(true,true,true); 
    }
 }
+
+// const pageNumbers = () => {
+//    const buttonAmount = studentDataArray.length;
+//    while (i < buttonAmount) {
+//    }
+// }
+
 
 
 // if(increase){currentPage++}else{currentPage--};
