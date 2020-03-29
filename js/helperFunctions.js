@@ -62,7 +62,6 @@ Ther may be situations where you dont need any buttons
         prevPageButton.addEventListener("click", goToPrevPage);
       } else {
         prevContainer.removeChild(prevPageButton) 
-        console.log("remove nextPageButton")   
       }
    } 
    if (NextPage){
@@ -71,7 +70,6 @@ Ther may be situations where you dont need any buttons
         nextPageButton.addEventListener("click", goToNextPage);
       } else {
         nextContainer.removeChild(nextPageButton)
-        console.log("remove nextPageButton")   
       } 
    }   
 }

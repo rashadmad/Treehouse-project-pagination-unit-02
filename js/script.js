@@ -49,7 +49,6 @@ const paginating = () => {
    if(currentPage === 0){
       addOrRemovePageLinks(false,true,true); 
       if(prevContainer){
-         console.log("Remove")
          addOrRemovePageLinks(true,false)
       }
    } else if(currentPage > studentDataArray.length - 2){
@@ -58,14 +57,6 @@ const paginating = () => {
       addOrRemovePageLinks(true,true,true); 
    }
 }
-
-// const pageNumbers = () => {
-//    const buttonAmount = studentDataArray.length;
-//    while (i < buttonAmount) {
-//    }
-// }
-
-
 
 // if(increase){currentPage++}else{currentPage--};
 // console.log("hello");

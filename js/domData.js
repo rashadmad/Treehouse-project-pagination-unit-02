@@ -38,7 +38,7 @@ containerForPrevButton.className = 'prevContainer pagination'
 
 pagination.appendChild(containerForPrevButton);
 
-let numberedButtonsContainer = document.createElement("li");
+const numberedButtonsContainer = document.createElement("li");
 numberedButtonsContainer.className = 'numberedButtonsContainer' 
 
 pagination.appendChild(numberedButtonsContainer);
