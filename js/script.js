@@ -25,18 +25,17 @@ this argument takes in an array and from that array populates our unordered list
 **/
 const showPage = (myArray) => {
    paginating();
+   //pageHighLight()
    if (myArray){
          let i = 0;
-   const lastPage = myArray[i].length;
-   //create a list item to be printed later
-      while (i < lastPage) { 
+      //create a list item to be printed later
+      while (i < amountToDisplayOnPage) { 
          let listItem = document.createElement("li");
          //add a classname to a list item so we can get proper styling
          listItem.className = 'student-item cf'; 
          //add a list item to the ul 
          //the student function takes in an array and number that prints out specific data to a list item
          listItem.innerHTML = student(myArray[currentPage],i);
-         //list.appendChild(listItem);
          list.appendChild(listItem);
          i++
       }
@@ -53,10 +52,32 @@ const paginating = () => {
       }
    } else if(currentPage > studentDataArray.length - 2){
       addOrRemovePageLinks(false,true)
+      addOrRemovePageLinks(true,false,true)
    } else {
       addOrRemovePageLinks(true,true,true); 
    }
 }
+
+const buttonStuff = () => {
+const currentPagePlusOne = currentPage + 1; 
+let presentedCurrentPage = ".button_" + currentPagePlusOne;
+   
+let name = document.querySelector(presentedCurrentPage);
+let allButtons = document.getElementsByClassName("page_button");
+
+if (allButtons) {
+   [].forEach.call(allButtons, function(buttons) {
+      buttons.classList.remove('clicked')
+   });
+}
+
+
+name.classList.add('clicked');
+}
+
+// const pageHighLight = () =>{
+//    const 
+// }
 
 // if(increase){currentPage++}else{currentPage--};
 // console.log("hello");

@@ -18,24 +18,23 @@ const createIntialPage = () => {
     pageNumbers();
 }
 
-//creates a group od list items to be displayed in 
+//creates a group of list items to be displayed in the pagination div
+//these buttons when clicked take you to the coresponding page
 const pageNumbers = () => {
     const buttonAmount = studentDataArray.length;
     let i = 0
-    const numberClick = (number) => {
-        currentPage = number
-    }
     while (i < buttonAmount) {
+        let presentedNum = i + 1;
         const numberButton = document.createElement("li");
-        //const presentedNum = i + 1
-        numberButton.innerHTML += '<a>' + i + '</a>';
+        numberButton.innerHTML += '<a class= "page_button button_' + presentedNum + '">' + presentedNum + '</a>';
         numberedButtonsContainer.appendChild(numberButton);
-        const myNumber = i;
-        numberButton.addEventListener("click", function(){
-            emptyList()
-            currentPage = myNumber;
-            showPage(studentDataArray);
-        });    
+        const holdExactNumber = i;
+            numberButton.addEventListener("click", function(){
+                emptyList()
+                currentPage = holdExactNumber;
+                showPage(studentDataArray);
+                buttonStuff()
+            });    
         i++
     }
  }

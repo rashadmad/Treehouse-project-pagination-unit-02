@@ -26,8 +26,13 @@ const breakDataIntoGroupsOfTen = (myArray, groupSize) =>{
  }
  
  //so this function takes in an array and num then takes that data and ceates a everything that the list item needs to create a student
- const student = (myArray,num) => '<div class="student-details"><img class="avatar" src=' + myArray[num].img + '><h3>' + myArray[num].name + '</h3><span class="email">' + myArray[num].email + '</span></div><div class="joined-details"><span class="date">' + myArray[num].dateJoined + '</span></div>'
-
+ const student = (myArray,num) => {
+    let studentLisItem = "";
+    if(myArray[num].img) {
+        studentLisItem = '<div class="student-details"><img class="avatar" src=' + myArray[num].img + '><h3>' + myArray[num].name + '</h3><span class="email">' + myArray[num].email + '</span></div><div class="joined-details"><span class="date">' + myArray[num].dateJoined + '</span></div>'
+    }
+    return studentLisItem
+ }
  //paging fucntions that handle pagination button clicks
  //
  const goToPrevPage = () => {
@@ -39,7 +44,6 @@ const breakDataIntoGroupsOfTen = (myArray, groupSize) =>{
     showPage(studentDataArray);
  }
  const goToNextPage = () => {
-    const studentsToDisplay = breakDataIntoGroupsOfTen(studentData,amountToDisplayOnPage)
     currentPage++ 
     emptyList(list);
     showPage(studentDataArray);
