@@ -30,9 +30,10 @@ const pageNumbers = () => {
         //const presentedNum = i + 1
         numberButton.innerHTML += '<a>' + i + '</a>';
         numberedButtonsContainer.appendChild(numberButton);
+        const myNumber = i;
         numberButton.addEventListener("click", function(){
             emptyList()
-            currentPage = i;
+            currentPage = myNumber;
             showPage(studentDataArray);
         });    
         i++
