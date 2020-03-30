@@ -11,12 +11,12 @@ const studentAmount = studentData.length;
 const pagination = document.createElement("div");
 
 //next page button
-const nextPageButton = document.createElement("BUTTON");
+const nextPageButton = document.createElement("a");
 nextPageButton.className = 'nextPageButton pagination li a';
 nextPageButton.innerHTML = 'next';
 
 //prev page button
-const prevPageButton = document.createElement("BUTTON");
+const prevPageButton = document.createElement("a");
 prevPageButton.className = 'prevPageButton pagination li a';
 prevPageButton.innerHTML = 'prev';
 

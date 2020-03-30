@@ -18,13 +18,23 @@ const createIntialPage = () => {
     pageNumbers();
 }
 
+//creates a group od list items to be displayed in 
 const pageNumbers = () => {
     const buttonAmount = studentDataArray.length;
-    let i = 1
-    while (i < buttonAmount + 1) {
+    let i = 0
+    const numberClick = (number) => {
+        currentPage = number
+    }
+    while (i < buttonAmount) {
         const numberButton = document.createElement("li");
+        //const presentedNum = i + 1
         numberButton.innerHTML += '<a>' + i + '</a>';
         numberedButtonsContainer.appendChild(numberButton);
+        numberButton.addEventListener("click", function(){
+            emptyList()
+            currentPage = i;
+            showPage(studentDataArray);
+        });    
         i++
     }
  }
