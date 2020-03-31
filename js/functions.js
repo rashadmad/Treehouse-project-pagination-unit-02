@@ -8,6 +8,7 @@ const createIntialPage = () => {
     list.innerHTML = '';
     //repopulates list 
     showPage(studentDataArray);
+    currentPageIndicator();
  }
 
  const addPaginationBar = () => {   
@@ -33,7 +34,7 @@ const pageNumbers = () => {
                 emptyList()
                 currentPage = holdExactNumber;
                 showPage(studentDataArray);
-                buttonStuff()
+                currentPageIndicator();
             });    
         i++
     }

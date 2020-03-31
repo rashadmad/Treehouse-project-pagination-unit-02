@@ -58,7 +58,7 @@ const paginating = () => {
    }
 }
 
-const buttonStuff = () => {
+const currentPageIndicator = () => {
 const currentPagePlusOne = currentPage + 1; 
 let presentedCurrentPage = ".button_" + currentPagePlusOne;
    
