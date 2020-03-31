@@ -26,7 +26,6 @@ this argument takes in an array and from that array populates our unordered list
 const showPage = (myArray) => {
    paginating();
    let i = 0;  
-   let j = 0;
    //get the length of the part of the array that we are
       //create a list item to be printed later
       while (i < myArray[currentPage].length) { 

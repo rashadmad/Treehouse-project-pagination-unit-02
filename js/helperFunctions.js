@@ -37,7 +37,7 @@ const breakDataIntoGroupsOfTen = (myArray, groupSize) =>{
  //
  const goToPrevPage = () => {
     //deacreases the current page global varible
-    currentPage-- 
+    if(currentPage < 0){currentPage-- }
     //emptys the ul
     emptyList(list);
     //repopulates the url bute with
@@ -45,6 +45,7 @@ const breakDataIntoGroupsOfTen = (myArray, groupSize) =>{
     currentPageIndicator();
  }
  const goToNextPage = () => {
+   // if(currentPage < 0){currentPage-- }
     currentPage++ 
     emptyList(list);
     showPage(studentDataArray);
