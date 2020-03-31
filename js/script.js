@@ -25,7 +25,7 @@ this nifty function here adds list items to our unordered list
 this argument takes in an array and from that array populates our unordered list
 **/
 const showPage = (myArray) => {
-   paginating();
+   prevAndNextButtonRemoval();
    let i = 0;  
    //get the length of the part of the array that we are
       //create a list item to be printed later
@@ -41,12 +41,12 @@ const showPage = (myArray) => {
       }
 }
 
-const paginating = () => {
+const prevAndNextButtonRemoval = () => {
    
    //handling first page
    if(currentPage === 0){
       addOrRemovePageLinks(false,true,true); 
-      addOrRemovePageLinks(true,false);
+      addOrRemovePageLinks(true,false),false;
    } else if(currentPage > studentDataArray.length - 2){
       addOrRemovePageLinks(false,true)
       addOrRemovePageLinks(true,false,true)
