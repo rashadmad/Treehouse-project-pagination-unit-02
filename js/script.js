@@ -25,11 +25,12 @@ this argument takes in an array and from that array populates our unordered list
 **/
 const showPage = (myArray) => {
    paginating();
-   //pageHighLight()
-   if (myArray){
-         let i = 0;
+   let i = 0;  
+   let j = 0;
+   //get the length of the part of the array that we are
       //create a list item to be printed later
-      while (i < amountToDisplayOnPage) { 
+      while (i < myArray[currentPage].length) { 
+         console.log(myArray.length)
          let listItem = document.createElement("li");
          //add a classname to a list item so we can get proper styling
          listItem.className = 'student-item cf'; 
@@ -39,7 +40,6 @@ const showPage = (myArray) => {
          list.appendChild(listItem);
          i++
       }
-   }
 }
 
 const paginating = () => {
