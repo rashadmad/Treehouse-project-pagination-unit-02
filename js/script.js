@@ -11,6 +11,7 @@ to work with out javaScript. I am doing this so I can dynamically
 repopulate the ul directlly after allso need to add a search bar dynamically
 **/
 window.onload = () => {
+   //check the functions.js for this function
    createIntialPage();
 }
 /** 
@@ -29,7 +30,6 @@ const showPage = (myArray) => {
    //get the length of the part of the array that we are
       //create a list item to be printed later
       while (i < myArray[currentPage].length) { 
-         console.log(myArray.length)
          let listItem = document.createElement("li");
          //add a classname to a list item so we can get proper styling
          listItem.className = 'student-item cf'; 
@@ -42,13 +42,11 @@ const showPage = (myArray) => {
 }
 
 const paginating = () => {
-   const prevContainer = document.querySelector('.prevContainer').hasChildNodes()
+   
    //handling first page
    if(currentPage === 0){
       addOrRemovePageLinks(false,true,true); 
-      if(prevContainer){
-         addOrRemovePageLinks(true,false)
-      }
+      addOrRemovePageLinks(true,false);
    } else if(currentPage > studentDataArray.length - 2){
       addOrRemovePageLinks(false,true)
       addOrRemovePageLinks(true,false,true)

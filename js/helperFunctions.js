@@ -7,7 +7,6 @@ const emptyList = () => {
     list.innerHTML = '';
  }
 
-
 /**
 So I need to create a page of populated list elements
 I need to break up the diffrent list of elements into list of 0 - 9 
@@ -45,8 +44,7 @@ const breakDataIntoGroupsOfTen = (myArray, groupSize) =>{
     currentPageIndicator();
  }
  const goToNextPage = () => {
-   // if(currentPage < 0){currentPage-- }
-    currentPage++ 
+   if(currentPage  > 5){currentPage++ }
     emptyList(list);
     showPage(studentDataArray);
     currentPageIndicator();
@@ -68,7 +66,9 @@ Ther may be situations where you dont need any buttons
         prevContainer.appendChild(prevPageButton)
         prevPageButton.addEventListener("click", goToPrevPage);
       } else {
-        prevContainer.removeChild(prevPageButton) 
+         if(document.querySelector('.prevContainer').hasChildNodes()){
+            prevContainer.removeChild(prevPageButton) 
+         }
       }
    } 
    if (NextPage){
@@ -76,7 +76,10 @@ Ther may be situations where you dont need any buttons
         nextContainer.appendChild(nextPageButton)
         nextPageButton.addEventListener("click", goToNextPage);
       } else {
-        nextContainer.removeChild(nextPageButton)
+         //I need to make sure something cant be removed if it doesnt exsits
+         if(document.querySelector('.nextContainer').hasChildNodes()){
+            nextContainer.removeChild(nextPageButton)
+         }
       } 
    }   
 }
