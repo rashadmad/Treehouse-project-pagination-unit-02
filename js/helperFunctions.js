@@ -42,11 +42,13 @@ const breakDataIntoGroupsOfTen = (myArray, groupSize) =>{
     emptyList(list);
     //repopulates the url bute with
     showPage(studentDataArray);
+    currentPageIndicator();
  }
  const goToNextPage = () => {
     currentPage++ 
     emptyList(list);
     showPage(studentDataArray);
+    currentPageIndicator();
  }
 
 /**
