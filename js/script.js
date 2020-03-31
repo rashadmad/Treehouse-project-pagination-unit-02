@@ -67,9 +67,7 @@ if (allButtons) {
       buttons.classList.remove('clicked')
    });
 }
-
-
-name.classList.add('clicked');
+   name.classList.add('clicked');
 }
 
 // const pageHighLight = () =>{

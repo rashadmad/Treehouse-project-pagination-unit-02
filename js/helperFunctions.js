@@ -44,7 +44,7 @@ const breakDataIntoGroupsOfTen = (myArray, groupSize) =>{
     currentPageIndicator();
  }
  const goToNextPage = () => {
-   if(currentPage < studentDataArray.length - 2){currentPage++ }
+   if(currentPage < studentDataArray.length - 1){currentPage++ }
     emptyList(list);
     showPage(studentDataArray);
     currentPageIndicator();
