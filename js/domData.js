@@ -10,8 +10,9 @@ const studentAmount = studentData.length;
 //pagination
 const pagination = document.createElement("div");
 
-//input bar
-myInputValue = "";
+//search bar
+let myInputValue = "";
+let inputSearched = false;
 
 //next page button
 const nextPageButton = document.createElement("a");

@@ -19,13 +19,14 @@ window.onload = () => {
 this array takes in all of our student data breaks it up in to segments that can be
 displayed on different pages
 **/
-let studentDataArray = breakDataIntoGroupsOfTen(studentData,amountToDisplayOnPage);
+let studentDataArray = inputSearched ? searched(studentData) : breakDataIntoGroupsOfTen(studentData,amountToDisplayOnPage);
 
 /**
 this nifty function here adds list items to our unordered list 
 this argument takes in an array and from that array populates our unordered list
 **/
 const showPage = (myArray) => {
+   //this function check to see if either the prev or next buttons need to be removed every time the show page function is invoked
    prevAndNextButtonRemoval();
    let i = 0;  
    //get the length of the part of the array that we are

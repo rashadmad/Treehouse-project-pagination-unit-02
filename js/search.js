@@ -7,23 +7,22 @@ then an action when the search bar is emptied
 //const searchedStudentDataArray = breakDataIntoGroupsOfTen(searchedStudentData,amountToDisplayOnPage);
 
 //compare the names value from the inputfield to the studentdata obj to the input value of the search
-let searchedStudentData = (myArray) => {
-    let arrayOfNames = []
+let searched = (myArray) => {
     let i = 0
-    let matches = []
-    while(i < myArray.length){
-        arrayOfNames.push(myArray[i].name);
-        i++
-    }
-    return matches = arrayOfNames.filter(name => name === myInputValue);
+    let matchingObjects = []
+    matchingObjects = myArray.filter(student => student.name === myInputValue)
+
+    console.log(matchingObjects)
+    return matchingObjects
 }
 
-let myInputValue = ''
 
 const submitButton = () => {
-    myInputValue = document.getElementById('searchBar').value; 
-    console.log(searchedStudentData(studentData))
+    showPage(studentDataArray);
+    emptyList(list);
+    inputSearched = true;
 }
+
 
 // expected output: Array ["exuberant", "destruction", "present"]
 
