@@ -10,6 +10,9 @@ const studentAmount = studentData.length;
 //pagination
 const pagination = document.createElement("div");
 
+//input bar
+myInputValue = "";
+
 //next page button
 const nextPageButton = document.createElement("a");
 nextPageButton.className = 'nextPageButton pagination li a';

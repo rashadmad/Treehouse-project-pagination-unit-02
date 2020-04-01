@@ -13,7 +13,7 @@ repopulate the ul directlly after allso need to add a search bar dynamically
 window.onload = () => {
    //check the functions.js for this function
    createIntialPage(studentDataArray);
-   //searchBarPopulated()
+   // const getValue = () => document.getElementById('searchBar').value;
 }
 /** 
 this array takes in all of our student data breaks it up in to segments that can be
