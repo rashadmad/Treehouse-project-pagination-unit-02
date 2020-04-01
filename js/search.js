@@ -4,13 +4,13 @@ second we need action on a letter being added to the search
 then an action when the search bar is emptied
 **/
 
-const searchBar = document.getElementById('searchBar');
-const searchBarValue = document.getElementsByTagName('input').value;
 //const searchedStudentDataArray = breakDataIntoGroupsOfTen(searchedStudentData,amountToDisplayOnPage);
 
 const submitButton = () => {
-    console.log(searchBar.value);
+    let searchBarValue = document.getElementById('searchBar').value;
+    console.log(searchBarValue);
 }
+
 
 // const value = () => searchBar.value = "";
 
