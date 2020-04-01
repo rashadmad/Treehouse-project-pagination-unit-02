@@ -29,7 +29,7 @@ let currentPage = 0;
 //amount of students to display on a page
 const amountToDisplayOnPage = 10;
 // title here will also hold a search bar also next to it would be an unordered list
-const pageBase = '<div class="page-header cf"><h2>Students</h2><input type="text" placeholder="Search.."><button onclick="submitButton()">Search</button></div>'
+const pageBase = '<div class="student-search cf"><h2>Students</h2><input id="searchBar" type="text" placeholder="Search for students..."><button onclick="submitButton()">Search</button></div>'
 
 const pageNumberButton = '<li></li>'
 
