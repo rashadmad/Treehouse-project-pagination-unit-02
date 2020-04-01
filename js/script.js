@@ -5,7 +5,7 @@ FSJS project 2 - List Filter and Pagination
 "use strict" 
 
 /**
-first off on page load I want to remove the elements as they are in html
+first off on page load I want to remove the elements as they are i html
 I will leave them physically in the html as this site is meant
 to work with out javaScript. I am doing this so I can dynamically 
 repopulate the ul directlly after allso need to add a search bar dynamically
@@ -13,6 +13,8 @@ repopulate the ul directlly after allso need to add a search bar dynamically
 window.onload = () => {
    //check the functions.js for this function
    createIntialPage();
+   search();
+   //searchBarPopulated()
 }
 /** 
 this array takes in all of our student data breaks it up in to segments that can be
