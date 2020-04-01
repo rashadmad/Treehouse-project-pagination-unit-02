@@ -10,16 +10,32 @@ const value = () => searchBar.value = "";
 const listItems = list.getElementsByTagName('li');
 let txtValue = "";
 
+let searchedStudentData = (array) => {
+    let filteredArrayOfObjects = []
+    let filteredArrayNames = []
+
+    while(i < array.length){
+        filteredArray += array[i].name;
+        filteredArray
+        i++
+    }
+    return filteredArrayOfObjects
+}
+
+
+
 //searchBar.addEventListener('input', updateValue);
 
-const search = () => { 
+// const search = () => { 
 
-    const student = list.querySelectorAll(".student-item");
-    // Loop through all list items, and hide those who don't match the search query
-    for (i = 0; i < student.length; i++) {
-        list.removeChild(student[i]);
-    }
-  }
+// const removeIt = () => list.removeChild(student[i]);
+
+//     const student = list.querySelectorAll(".student-item");
+//     // Loop through all list items, and hide those who don't match the search query
+//     for (i = 0; i < student.length; i++) {
+//         removeIt()
+//     }
+//   }
 
 //I need a way to listen for changes in a an input field
 /* event listener */

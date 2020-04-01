@@ -21,6 +21,7 @@ this array takes in all of our student data breaks it up in to segments that can
 displayed on different pages
 **/
 let studentDataArray = breakDataIntoGroupsOfTen(studentData,amountToDisplayOnPage);
+let searchedStudentDataArray = breakDataIntoGroupsOfTen(searchedStudentData,amountToDisplayOnPage);
 
 /**
 this nifty function here adds list items to our unordered list 
