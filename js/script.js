@@ -12,8 +12,7 @@ repopulate the ul directlly after allso need to add a search bar dynamically
 **/
 window.onload = () => {
    //check the functions.js for this function
-   createIntialPage();
-   search();
+   createIntialPage(studentDataArray);
    //searchBarPopulated()
 }
 /** 
@@ -21,7 +20,6 @@ this array takes in all of our student data breaks it up in to segments that can
 displayed on different pages
 **/
 let studentDataArray = breakDataIntoGroupsOfTen(studentData,amountToDisplayOnPage);
-let searchedStudentDataArray = breakDataIntoGroupsOfTen(searchedStudentData,amountToDisplayOnPage);
 
 /**
 this nifty function here adds list items to our unordered list 

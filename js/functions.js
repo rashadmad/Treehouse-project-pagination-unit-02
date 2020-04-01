@@ -1,5 +1,5 @@
 //going to need to create
-const createIntialPage = () => {
+const createIntialPage = (myArray) => {
     //add pagination
     addPaginationBar();
     //adds search bar
@@ -7,7 +7,7 @@ const createIntialPage = () => {
     //empties list
     list.innerHTML = '';
     //repopulates list 
-    showPage(studentDataArray);
+    showPage(myArray);
     currentPageIndicator();
  }
 

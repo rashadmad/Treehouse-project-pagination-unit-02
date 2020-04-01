@@ -5,22 +5,29 @@ then an action when the search bar is emptied
 **/
 
 const searchBar = document.getElementsByTagName('input');
-const value = () => searchBar.value = "";
+//const searchedStudentDataArray = breakDataIntoGroupsOfTen(searchedStudentData,amountToDisplayOnPage);
 
-const listItems = list.getElementsByTagName('li');
-let txtValue = "";
-
-let searchedStudentData = (array) => {
-    let filteredArrayOfObjects = []
-    let filteredArrayNames = []
-
-    while(i < array.length){
-        filteredArray += array[i].name;
-        filteredArray
-        i++
-    }
-    return filteredArrayOfObjects
+const submitButton = () => {
+    console.log("hello brah")
 }
+
+// const value = () => searchBar.value = "";
+
+// const listItems = list.getElementsByTagName('li');
+// let txtValue = "";
+
+// let searchedStudentData = (myArray) => {
+//     let filteredArrayOfObjects = []
+//     let filteredArrayNames = []
+//     let arrayOfNames = []
+
+//     while(i < myArray.length){
+//         arrayOfNames += array[i].name;
+//         i++
+//     }
+//     return arrayOfNames
+// }
+// console.log(arrayOfNames)
 
 
 
