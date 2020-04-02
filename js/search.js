@@ -4,23 +4,20 @@ second we need action on a letter being added to the search
 then an action when the search bar is emptied
 **/
 
-//const searchedStudentDataArray = breakDataIntoGroupsOfTen(searchedStudentData,amountToDisplayOnPage);
-
 //compare the names value from the inputfield to the studentdata obj to the input value of the search
-let searched = (myArray) => {
+let searched = (myArray,inputValue) => {
     let i = 0
     let matchingObjects = []
-    matchingObjects = myArray.filter(student => student.name === myInputValue)
+    matchingObjects = myArray.filter(student => student.name === inputValue)
 
-    console.log(matchingObjects)
     return matchingObjects
 }
 
 
 const submitButton = () => {
-    showPage(studentDataArray);
+let searchBarValue = document.getElementById('searchBar').value;
     emptyList(list);
-    inputSearched = true;
+    showSearch(searched(studentData,searchBarValue));
 }
 
 

@@ -32,23 +32,6 @@ const breakDataIntoGroupsOfTen = (myArray, groupSize) =>{
     }
     return studentLisItem
  }
- //paging fucntions that handle pagination button clicks
- //
- const goToPrevPage = () => {
-    //deacreases the current page global varible
-    if(currentPage > 0){currentPage-- }
-    //emptys the ul
-    emptyList(list);
-    //repopulates the url bute with
-    showPage(studentDataArray);
-    currentPageIndicator();
- }
- const goToNextPage = () => {
-   if(currentPage < studentDataArray.length - 1){currentPage++ }
-    emptyList(list);
-    showPage(studentDataArray);
-    currentPageIndicator();
- }
 
 /**
 when you click the prev button the paginationClick function fires passing an prameter of true

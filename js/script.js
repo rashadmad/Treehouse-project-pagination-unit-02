@@ -19,7 +19,7 @@ window.onload = () => {
 this array takes in all of our student data breaks it up in to segments that can be
 displayed on different pages
 **/
-let studentDataArray = inputSearched ? searched(studentData) : breakDataIntoGroupsOfTen(studentData,amountToDisplayOnPage);
+let studentDataArray = breakDataIntoGroupsOfTen(studentData,amountToDisplayOnPage);
 
 /**
 this nifty function here adds list items to our unordered list 
@@ -41,6 +41,35 @@ const showPage = (myArray) => {
          list.appendChild(listItem);
          i++
       }
+}
+
+const showSearch = (myArray) => {
+   let i = 0
+   while (i < myArray.length) { 
+      let listItem = document.createElement("li");
+      listItem.className = 'student-item cf'; 
+      listItem.innerHTML = '<div class="student-details"><img class="avatar" src=' + myArray[i].img + '><h3>' + myArray[i].name + '</h3><span class="email">' + myArray[i].email + '</span></div><div class="joined-details"><span class="date">' + myArray[i].dateJoined + '</span></div>';
+      list.appendChild(listItem);
+      i++
+   }   
+}
+
+ //paging fucntions that handle pagination button clicks
+ //
+ const goToPrevPage = () => {
+   //deacreases the current page global varible
+   if(currentPage > 0){currentPage-- }
+   //emptys the ul
+   emptyList(list);
+   //repopulates the url bute with
+   showPage(studentDataArray);
+   currentPageIndicator();
+}
+const goToNextPage = () => {
+  if(currentPage < studentDataArray.length - 1){currentPage++ }
+   emptyList(list);
+   showPage(studentDataArray);
+   currentPageIndicator();
 }
 
 const prevAndNextButtonRemoval = () => {
